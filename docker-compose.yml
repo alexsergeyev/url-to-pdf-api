@@ -9,8 +9,4 @@ services:
     ports:
       - '9000:9000'
     volumes:
-    - .:/usr/src/app
-    - node_modules:/usr/src/app/node_modules
-volumes:
-  app:
-  node_modules:
+    - .:/home/pptruser

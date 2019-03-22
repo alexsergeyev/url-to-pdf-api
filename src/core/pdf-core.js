@@ -1,4 +1,4 @@
-const puppeteer = require('puppeteer');
+const puppeteer = require('puppeteer-core');
 const _ = require('lodash');
 const config = require('../config');
 const logger = require('../util/logger')(__filename);
@@ -38,12 +38,12 @@ async function render(_opts = {}) {
   const puppeterOptions = {
     headless: !config.DEBUG_MODE,
     ignoreHTTPSErrors: opts.ignoreHttpsErrors,
-    args: ['--disable-gpu', '--no-sandbox', '--disable-setuid-sandbox'],
+    args: ['--no-sandbox', '--headless', '--disable-gpu', '--disable-software-rasterizer', '--disable-dev-shm-usage'],
     sloMo: config.DEBUG_MODE ? 250 : undefined,
   };
 
-  if ( typeof process.env.CHROME_PATH !== 'undefined' && process.env.CHROME_PATH ) {
-    puppeterOptions.executablePath = process.env.CHROME_PATH ;
+  if (typeof process.env.CHROME_PATH !== 'undefined' && process.env.CHROME_PATH) {
+    puppeterOptions.executablePath = process.env.CHROME_PATH;
   }
 
   const browser = await puppeteer.launch(puppeterOptions);
