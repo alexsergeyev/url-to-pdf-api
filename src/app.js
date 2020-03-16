@@ -35,9 +35,9 @@ function createApp() {
   logger.info('Using CORS options:', corsOpts);
   app.use(cors(corsOpts));
 
-  // Limit to 20mb if HTML has e.g. inline images
-  app.use(bodyParser.text({ limit: '20mb', type: 'text/html' }));
-  app.use(bodyParser.json({ limit: '20mb' }));
+  // Limit to 100mb if HTML has e.g. inline images
+  app.use(bodyParser.text({ limit: '100mb', type: 'text/html' }));
+  app.use(bodyParser.json({ limit: '100mb' }));
 
   app.use(compression({
     // Compress everything over 10 bytes
