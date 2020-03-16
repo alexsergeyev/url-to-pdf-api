@@ -19,7 +19,7 @@ async function render(_opts = {}) {
     },
     goto: {
       waitUntil: 'networkidle2',
-      timeout: 5000,
+      timeout: 30000,
     },
     pdf: {
       format: 'A4',
